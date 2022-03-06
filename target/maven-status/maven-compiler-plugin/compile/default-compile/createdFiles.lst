@@ -1,3 +1,5 @@
-fr\oxyodev\oxycore\OxyoCore.class
-fr\oxyodev\oxycore\PvpCommand.class
-fr\oxyodev\oxycore\EventHandler.class
+fr\oxyodev\oxyocore\PvpCommand.class
+fr\oxyodev\oxyocore\GeneratorTier.class
+fr\oxyodev\oxyocore\EventHandler.class
+fr\oxyodev\oxyocore\OxyoCore.class
+fr\oxyodev\oxyocore\Gui.class
