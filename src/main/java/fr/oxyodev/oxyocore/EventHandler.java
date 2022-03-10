@@ -1,5 +1,6 @@
 package fr.oxyodev.oxyocore;
 
+import fr.oxyodev.oxyocore.commands.CommandPvP;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -24,13 +25,13 @@ public class EventHandler implements Listener {
                 Projectile projectile = (Projectile) event.getDamager();
                 damager = (Entity) projectile.getShooter();
             }
-            if (damager != null && damager.getType() == EntityType.PLAYER && (!PvpCommand.isAttackable((Player) damager) || !PvpCommand.isAttackable((Player) event.getEntity())))
+            if (damager != null && damager.getType() == EntityType.PLAYER && (!CommandPvP.isAttackable((Player) damager) || !CommandPvP.isAttackable((Player) event.getEntity())))
                 event.setCancelled(true);
         }
     }
 
     @org.bukkit.event.EventHandler
     public void onJoin(PlayerJoinEvent event) {
-        PvpCommand.setAttackable(event.getPlayer(), false);
+        CommandPvP.setAttackable(event.getPlayer(), false);
     }
 }
