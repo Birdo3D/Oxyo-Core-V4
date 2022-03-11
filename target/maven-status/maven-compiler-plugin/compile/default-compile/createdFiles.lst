@@ -1,5 +1,8 @@
-fr\oxyodev\oxyocore\PvpCommand.class
-fr\oxyodev\oxyocore\GeneratorTier.class
+fr\oxyodev\oxyocore\utils\GeneratorData.class
+fr\oxyodev\oxyocore\commands\CommandGenerator.class
+fr\oxyodev\oxyocore\utils\GeneratorTier.class
 fr\oxyodev\oxyocore\EventHandler.class
+fr\oxyodev\oxyocore\guis\GuiGenerator.class
 fr\oxyodev\oxyocore\OxyoCore.class
-fr\oxyodev\oxyocore\Gui.class
+fr\oxyodev\oxyocore\utils\Utils.class
+fr\oxyodev\oxyocore\commands\CommandPvP.class
