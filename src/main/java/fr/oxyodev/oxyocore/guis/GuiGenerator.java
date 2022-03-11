@@ -2,14 +2,13 @@ package fr.oxyodev.oxyocore.guis;
 
 import fr.birdo.easycraftapi.inventory.GuiScreen;
 import fr.birdo.easycraftapi.item.Items;
+import fr.oxyodev.oxyocore.utils.GeneratorData;
 import fr.oxyodev.oxyocore.utils.GeneratorTier;
+import fr.oxyodev.oxyocore.utils.Utils;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 
 public class GuiGenerator extends GuiScreen {
-
-    private GeneratorTier generatorTier = GeneratorTier.COAL;
-    private int advancement = 63;
 
     public GuiGenerator() {
     }
@@ -19,10 +18,12 @@ public class GuiGenerator extends GuiScreen {
 
     public void drawScreen() {
         this.setGuiSize(27);
+        GeneratorTier generatorTier = Utils.getTierByIndex(GeneratorData.getGeneratorTier());
+        int advancement = GeneratorData.getGeneratorAdvancement();
         int t = Math.round((float) advancement / generatorTier.getCount() * 9) + 8;
         for (int i = 0; i < 27; i++) {
             if (i == 4)
-                this.addItem((new Items(generatorTier.getMaterial(), -1)).setName(ChatColor.DARK_GRAY + "Unlocking tier : " + generatorTier.getColor() + generatorTier.getName()), i);
+                this.addItem((new Items(generatorTier.getIcon(), -1)).setName(ChatColor.DARK_GRAY + "Unlocking tier : " + generatorTier.getColor() + generatorTier.getName()), i);
             else if (i >= 9 && i <= 17)
                 if (i < t)
                     this.addItem((new Items(Material.GREEN_STAINED_GLASS_PANE, -1)).setName(ChatColor.GREEN + "Unlocked " + ChatColor.DARK_GRAY + "(" + Math.round((float) (i - 8) / 9 * 100) + "/100)"), i);
@@ -38,8 +39,5 @@ public class GuiGenerator extends GuiScreen {
 
     public String getCustomName() {
         return "Generator Upgrade";
-    }
-
-    public void onButtonPressed(int buttonIndex) {
     }
 }

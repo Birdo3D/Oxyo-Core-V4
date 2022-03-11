@@ -21,7 +21,10 @@ public class OxyoCore extends JavaPlugin {
         GameRegistry.registerCommand(this, new CommandGenerator(2));
         GameRegistry.registerGui("oxyocore", new GuiGenerator(), 1);
         dataFolderPath = getDataFolder().getAbsolutePath();
-        File generatorDataFile = new File(OxyoCore.dataFolderPath + "GeneratorData.yml");
+        File folder = new File(dataFolderPath);
+        if (!folder.exists())
+            folder.mkdir();
+        File generatorDataFile = new File(OxyoCore.dataFolderPath + "/GeneratorData.yml");
         if (!generatorDataFile.exists()) {
             try {
                 generatorDataFile.createNewFile();

@@ -41,7 +41,7 @@ public class GeneratorData {
     }
 
     private static File getFile() {
-        return new File(OxyoCore.dataFolderPath + "GeneratorData.yml");
+        return new File(OxyoCore.dataFolderPath + "/GeneratorData.yml");
     }
 
     private static void saveFile(FileConfiguration fileConfiguration) {

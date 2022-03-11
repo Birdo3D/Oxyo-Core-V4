@@ -7,3 +7,5 @@ depend:
 commands:
   pvp:
     description: Enable or disable pvp
+  generator:
+    description: Generator Upgrade
