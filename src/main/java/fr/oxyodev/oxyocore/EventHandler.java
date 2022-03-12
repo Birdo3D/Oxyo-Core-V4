@@ -4,6 +4,7 @@ import fr.birdo.easycraftapi.entity.PlayerHelper;
 import fr.oxyodev.oxyocore.commands.CommandPvP;
 import fr.oxyodev.oxyocore.guis.GuiGenerator;
 import fr.oxyodev.oxyocore.utils.GeneratorData;
+import fr.oxyodev.oxyocore.utils.GeneratorTier;
 import fr.oxyodev.oxyocore.utils.Utils;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -44,26 +45,23 @@ public class EventHandler implements Listener {
     public void onGuiClicked(InventoryClickEvent event) {
         if (event.getClickedInventory() != null)
             if (event.getView().getTitle().equalsIgnoreCase("Generator Upgrade"))
-                if (!event.isShiftClick()) {
-                    if (event.getClickedInventory().getSize() == 27 && event.getSlot() == 22)
-                        if (event.getCursor() != null) {
-                            if (event.getCursor().getType() == Utils.getTierByIndex(GeneratorData.getGeneratorTier()).getMaterial()) {
-                                if (GeneratorData.getGeneratorAdvancement() + event.getCursor().getAmount() >= Utils.getTierByIndex(GeneratorData.getGeneratorTier()).getCount()) {
-                                    event.getCursor().setAmount(event.getCursor().getAmount() - (Utils.getTierByIndex(GeneratorData.getGeneratorTier()).getCount() - GeneratorData.getGeneratorAdvancement()));
-                                    if (GeneratorData.getGeneratorTier() < 7) {
-                                        GeneratorData.setGeneratorTier(Utils.getTierByIndex(GeneratorData.getGeneratorTier() + 1));
-                                        GeneratorData.setGeneratorAdvancement(0);
-                                    } else
-                                        GeneratorData.setGeneratorAdvancement(GeneratorData.getGeneratorAdvancement() + event.getCursor().getAmount());
-                                } else {
-                                    GeneratorData.setGeneratorAdvancement(GeneratorData.getGeneratorAdvancement() + event.getCursor().getAmount());
-                                    event.getCursor().setAmount(0);
-                                }
-                                PlayerHelper.updateGui((Player) event.getWhoClicked(), new GuiGenerator());
+                if (event.getClickedInventory().getSize() == 27 && event.getSlot() == 22)
+                    if (event.getCursor() != null) {
+                        if (event.getCursor().getType() == Utils.getTierByIndex(GeneratorData.getGeneratorTier()).getMaterial()) {
+                            if (GeneratorData.getGeneratorAdvancement() + event.getCursor().getAmount() > Utils.getTierByIndex(GeneratorData.getGeneratorTier()).getCount()) {
+                                event.getCursor().setAmount(event.getCursor().getAmount() - (Utils.getTierByIndex(GeneratorData.getGeneratorTier()).getCount() - GeneratorData.getGeneratorAdvancement()));
+                                if (GeneratorData.getGeneratorTier() < 7) {
+                                    GeneratorData.setGeneratorTier(Utils.getTierByIndex(GeneratorData.getGeneratorTier() + 1));
+                                    GeneratorData.setGeneratorAdvancement(0);
+                                } else if (GeneratorData.getGeneratorAdvancement() < GeneratorTier.EMERALD.getCount())
+                                    GeneratorData.setGeneratorAdvancement(GeneratorTier.EMERALD.getCount());
+                            } else {
+                                GeneratorData.setGeneratorAdvancement(GeneratorData.getGeneratorAdvancement() + event.getCursor().getAmount());
+                                event.getCursor().setAmount(0);
                             }
-                            event.setCancelled(true);
+                            PlayerHelper.updateGui((Player) event.getWhoClicked(), new GuiGenerator());
                         }
-                } else
-                    event.setCancelled(true);
+                        event.setCancelled(true);
+                    }
     }
 }

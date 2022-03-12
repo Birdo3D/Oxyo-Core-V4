@@ -5,14 +5,14 @@ import org.bukkit.Material;
 
 public enum GeneratorTier {
 
-    COAL(0, Material.COAL_ORE, Material.COAL, "Coal", ChatColor.BLACK, 100),
-    COPPER(1, Material.COPPER_ORE, Material.COPPER_INGOT, "Copper", ChatColor.YELLOW, 100),
-    LAPIS(2, Material.LAPIS_ORE, Material.LAPIS_LAZULI, "Lapis Lazuli", ChatColor.DARK_BLUE, 100),
-    IRON(3, Material.IRON_ORE, Material.IRON_INGOT, "Iron", ChatColor.GRAY, 100),
-    GOLD(4, Material.GOLD_ORE, Material.GOLD_INGOT, "Gold", ChatColor.GOLD, 100),
+    COAL(0, Material.COAL_ORE, Material.COAL, "Coal", ChatColor.DARK_GRAY, 100),
+    COPPER(1, Material.COPPER_ORE, Material.COPPER_INGOT, "Copper", ChatColor.GOLD, 100),
+    LAPIS(2, Material.LAPIS_ORE, Material.LAPIS_LAZULI, "Lapis Lazuli", ChatColor.BLUE, 100),
+    IRON(3, Material.IRON_ORE, Material.IRON_INGOT, "Iron", ChatColor.WHITE, 100),
+    GOLD(4, Material.GOLD_ORE, Material.GOLD_INGOT, "Gold", ChatColor.YELLOW, 100),
     REDSTONE(5, Material.REDSTONE_ORE, Material.REDSTONE, "Redstone", ChatColor.RED, 100),
-    DIAMOND(6, Material.DIAMOND_ORE, Material.DIAMOND, "Diamond", ChatColor.BLUE, 100),
-    EMERALD(7, Material.EMERALD_ORE, Material.EMERALD, "Emerald", ChatColor.GREEN, 100);
+    DIAMOND(6, Material.DIAMOND_ORE, Material.DIAMOND, "Diamond", ChatColor.AQUA, 100),
+    EMERALD(7, Material.EMERALD_ORE, Material.EMERALD, "Emerald", ChatColor.DARK_GREEN, 100);
 
     private final Material icon;
     private final Material material;
