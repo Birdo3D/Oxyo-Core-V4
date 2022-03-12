@@ -1,0 +1,11 @@
+name: Oxyo-Core
+version: 2.0.0
+main: fr.oxyodev.oxyocore.OxyoCore
+api-version: 1.18
+depend:
+  - EasyCraftAPI
+commands:
+  pvp:
+    description: Enable or disable pvp
+  generator:
+    description: Generator Upgrade
