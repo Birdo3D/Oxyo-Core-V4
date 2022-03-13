@@ -5,6 +5,7 @@ import fr.oxyodev.oxyocore.commands.CommandGenerator;
 import fr.oxyodev.oxyocore.commands.CommandPvP;
 import fr.oxyodev.oxyocore.guis.GuiGenerator;
 import fr.oxyodev.oxyocore.utils.GeneratorData;
+import fr.oxyodev.oxyocore.utils.Utils;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -16,7 +17,9 @@ public class OxyoCore extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        saveDefaultConfig();
         getServer().getPluginManager().registerEvents(new EventHandler(this), this);
+        getServer().getPluginManager().registerEvents(new Utils(this), this);
         GameRegistry.registerCommand(this, new CommandPvP(1));
         GameRegistry.registerCommand(this, new CommandGenerator(2));
         GameRegistry.registerGui("oxyocore", new GuiGenerator(), 1);

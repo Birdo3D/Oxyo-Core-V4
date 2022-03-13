@@ -59,6 +59,12 @@
     },
     "done": true
   },
+  "minecraft:nether/root": {
+    "criteria": {
+      "entered_nether": "2022-03-13 10:37:32 +0100"
+    },
+    "done": true
+  },
   "minecraft:recipes/redstone/birch_pressure_plate": {
     "criteria": {
       "has_planks": "2022-03-07 20:00:15 +0100"
@@ -143,6 +149,12 @@
     },
     "done": true
   },
+  "minecraft:recipes/misc/nether_brick": {
+    "criteria": {
+      "has_netherrack": "2022-03-13 10:38:04 +0100"
+    },
+    "done": true
+  },
   "minecraft:recipes/tools/shears": {
     "criteria": {
       "has_iron_ingot": "2022-03-12 14:57:47 +0100"
@@ -161,6 +173,12 @@
     },
     "done": true
   },
+  "minecraft:recipes/building_blocks/packed_ice": {
+    "criteria": {
+      "has_ice": "2022-03-13 10:37:41 +0100"
+    },
+    "done": true
+  },
   "minecraft:recipes/decorations/jukebox": {
     "criteria": {
       "has_diamond": "2022-02-05 13:46:07 +0100"
@@ -176,6 +194,12 @@
   "minecraft:recipes/transportation/spruce_boat": {
     "criteria": {
       "in_water": "2022-03-12 17:00:37 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/flint_and_steel": {
+    "criteria": {
+      "has_obsidian": "2022-03-13 10:37:17 +0100"
     },
     "done": true
   },
@@ -329,6 +353,12 @@
     },
     "done": true
   },
+  "minecraft:recipes/building_blocks/polished_basalt": {
+    "criteria": {
+      "has_basalt": "2022-03-13 13:57:34 +0100"
+    },
+    "done": true
+  },
   "minecraft:recipes/redstone/birch_fence_gate": {
     "criteria": {
       "has_planks": "2022-03-07 20:00:15 +0100"
@@ -371,6 +401,12 @@
     },
     "done": true
   },
+  "minecraft:story/form_obsidian": {
+    "criteria": {
+      "obsidian": "2022-03-13 10:37:17 +0100"
+    },
+    "done": true
+  },
   "minecraft:recipes/misc/gold_ingot_from_blasting_gold_ore": {
     "criteria": {
       "has_gold_ore": "2022-03-09 17:18:51 +0100"
@@ -386,6 +422,12 @@
   "minecraft:recipes/tools/golden_shovel": {
     "criteria": {
       "has_gold_ingot": "2022-03-12 14:58:17 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/smooth_basalt": {
+    "criteria": {
+      "has_basalt": "2022-03-13 13:57:34 +0100"
     },
     "done": true
   },
@@ -540,6 +582,12 @@
     },
     "done": true
   },
+  "minecraft:recipes/decorations/enchanting_table": {
+    "criteria": {
+      "has_obsidian": "2022-03-13 10:37:17 +0100"
+    },
+    "done": true
+  },
   "minecraft:recipes/tools/iron_shovel": {
     "criteria": {
       "has_iron_ingot": "2022-03-12 14:57:47 +0100"
@@ -579,6 +627,12 @@
   "minecraft:recipes/misc/diamond_from_smelting_diamond_ore": {
     "criteria": {
       "has_diamond_ore": "2022-03-09 17:19:01 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/polished_basalt_from_basalt_stonecutting": {
+    "criteria": {
+      "has_basalt": "2022-03-13 13:57:34 +0100"
     },
     "done": true
   },
@@ -666,6 +720,12 @@
     },
     "done": true
   },
+  "minecraft:story/enter_the_nether": {
+    "criteria": {
+      "entered_nether": "2022-03-13 10:37:32 +0100"
+    },
+    "done": true
+  },
   "minecraft:recipes/redstone/redstone_block": {
     "criteria": {
       "has_redstone": "2022-03-12 14:58:27 +0100"
@@ -707,6 +767,13 @@
       "has_iron_ingot": "2022-03-12 14:57:47 +0100"
     },
     "done": true
+  },
+  "minecraft:nether/explore_nether": {
+    "criteria": {
+      "minecraft:nether_wastes": "2022-03-13 10:37:32 +0100",
+      "minecraft:warped_forest": "2022-03-13 11:16:01 +0100"
+    },
+    "done": false
   },
   "minecraft:recipes/redstone/birch_door": {
     "criteria": {
@@ -774,6 +841,12 @@
     },
     "done": true
   },
+  "minecraft:recipes/decorations/soul_campfire": {
+    "criteria": {
+      "has_soul_sand": "2022-03-13 10:37:46 +0100"
+    },
+    "done": true
+  },
   "minecraft:story/smelt_iron": {
     "criteria": {
       "iron": "2022-03-12 14:57:47 +0100"
@@ -795,6 +868,12 @@
   "minecraft:recipes/decorations/birch_fence": {
     "criteria": {
       "has_planks": "2022-03-07 20:00:15 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/soul_torch": {
+    "criteria": {
+      "has_soul_sand": "2022-03-13 10:37:46 +0100"
     },
     "done": true
   },

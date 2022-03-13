@@ -77,34 +77,66 @@ public class EventHandler implements Listener {
     public void onBlockFormEvent(BlockFormEvent e) {
         Block block = e.getBlock();
         if (block.getType() == Material.LAVA && findNearbyLava(block)) {
-            int max = GeneratorData.getGeneratorTier() * 100;
-            if (GeneratorData.getGeneratorTier() == 7 && GeneratorData.getGeneratorAdvancement() == GeneratorTier.EMERALD.getCount())
-                max = max + 100;
-            int rand = Random.roll(1, max);
-            if (rand <= GeneratorTier.COAL.getSpawnChance() && GeneratorData.getGeneratorTier() >= 1) {
-                block.setType(Material.COAL_ORE);
-                e.setCancelled(true);
-            } else if (rand > 100 && rand <= GeneratorTier.COPPER.getSpawnChance() + 100 && GeneratorData.getGeneratorTier() >= 2) {
-                block.setType(Material.COPPER_ORE);
-                e.setCancelled(true);
-            } else if (rand > 200 && rand <= GeneratorTier.LAPIS.getSpawnChance() + 200 && GeneratorData.getGeneratorTier() >= 3) {
-                block.setType(Material.LAPIS_ORE);
-                e.setCancelled(true);
-            } else if (rand > 300 && rand <= GeneratorTier.IRON.getSpawnChance() + 300 && GeneratorData.getGeneratorTier() >= 4) {
-                block.setType(Material.IRON_ORE);
-                e.setCancelled(true);
-            } else if (rand > 400 && rand <= GeneratorTier.GOLD.getSpawnChance() + 400 && GeneratorData.getGeneratorTier() >= 5) {
-                block.setType(Material.GOLD_ORE);
-                e.setCancelled(true);
-            } else if (rand > 500 && rand <= GeneratorTier.REDSTONE.getSpawnChance() + 500 && GeneratorData.getGeneratorTier() >= 6) {
-                block.setType(Material.REDSTONE_ORE);
-                e.setCancelled(true);
-            } else if (rand > 600 && rand <= GeneratorTier.DIAMOND.getSpawnChance() + 600 && GeneratorData.getGeneratorTier() == 7) {
-                block.setType(Material.DIAMOND_ORE);
-                e.setCancelled(true);
-            } else if (rand > 700 && rand <= GeneratorTier.EMERALD.getSpawnChance() + 700 && GeneratorData.getGeneratorTier() == 7 && GeneratorData.getGeneratorAdvancement() == GeneratorTier.EMERALD.getCount()) {
-                block.setType(Material.EMERALD_ORE);
-                e.setCancelled(true);
+            if (e.getBlock().getWorld().getEnvironment() == World.Environment.NORMAL) {
+                int max = GeneratorData.getGeneratorTier() * 100;
+                if (GeneratorData.getGeneratorTier() == 7 && GeneratorData.getGeneratorAdvancement() == GeneratorTier.EMERALD.getCount())
+                    max = max + 100;
+                int rand = Random.roll(1, max);
+                if (rand <= GeneratorTier.COAL.getSpawnChance() && GeneratorData.getGeneratorTier() >= 1) {
+                    block.setType(Material.COAL_ORE);
+                    e.setCancelled(true);
+                } else if (rand > 100 && rand <= GeneratorTier.COPPER.getSpawnChance() + 100 && GeneratorData.getGeneratorTier() >= 2) {
+                    block.setType(Material.COPPER_ORE);
+                    e.setCancelled(true);
+                } else if (rand > 200 && rand <= GeneratorTier.LAPIS.getSpawnChance() + 200 && GeneratorData.getGeneratorTier() >= 3) {
+                    block.setType(Material.LAPIS_ORE);
+                    e.setCancelled(true);
+                } else if (rand > 300 && rand <= GeneratorTier.IRON.getSpawnChance() + 300 && GeneratorData.getGeneratorTier() >= 4) {
+                    block.setType(Material.IRON_ORE);
+                    e.setCancelled(true);
+                } else if (rand > 400 && rand <= GeneratorTier.GOLD.getSpawnChance() + 400 && GeneratorData.getGeneratorTier() >= 5) {
+                    block.setType(Material.GOLD_ORE);
+                    e.setCancelled(true);
+                } else if (rand > 500 && rand <= GeneratorTier.REDSTONE.getSpawnChance() + 500 && GeneratorData.getGeneratorTier() >= 6) {
+                    block.setType(Material.REDSTONE_ORE);
+                    e.setCancelled(true);
+                } else if (rand > 600 && rand <= GeneratorTier.DIAMOND.getSpawnChance() + 600 && GeneratorData.getGeneratorTier() == 7) {
+                    block.setType(Material.DIAMOND_ORE);
+                    e.setCancelled(true);
+                } else if (rand > 700 && rand <= GeneratorTier.EMERALD.getSpawnChance() + 700 && GeneratorData.getGeneratorTier() == 7 && GeneratorData.getGeneratorAdvancement() == GeneratorTier.EMERALD.getCount()) {
+                    block.setType(Material.EMERALD_ORE);
+                    e.setCancelled(true);
+                }
+            } else if (e.getBlock().getWorld().getEnvironment() == World.Environment.NETHER) {
+                int rand = Random.roll(1, 900);
+                if (rand <= Utils.getConfig("Quartz.spawn")) {
+                    block.setType(Material.NETHER_QUARTZ_ORE);
+                    e.setCancelled(true);
+                } else if (rand > 100 && rand <= Utils.getConfig("Ancient_debris.spawn") + 100) {
+                    block.setType(Material.ANCIENT_DEBRIS);
+                    e.setCancelled(true);
+                } else if (rand > 200 && rand <= Utils.getConfig("Glowstone.spawn") + 200) {
+                    block.setType(Material.GLOWSTONE);
+                    e.setCancelled(true);
+                } else if (rand > 300 && rand <= Utils.getConfig("Blackstone.spawn") + 300) {
+                    block.setType(Material.BLACKSTONE);
+                    e.setCancelled(true);
+                } else if (rand > 400 && rand <= Utils.getConfig("Soulsand.spawn") + 400) {
+                    block.setType(Material.SOUL_SAND);
+                    e.setCancelled(true);
+                } else if (rand > 500 && rand <= Utils.getConfig("Soulsoil.spawn") + 500) {
+                    block.setType(Material.SOUL_SOIL);
+                    e.setCancelled(true);
+                } else if (rand > 600 && rand <= Utils.getConfig("Nether_gold.spawn") + 600) {
+                    block.setType(Material.NETHER_GOLD_ORE);
+                    e.setCancelled(true);
+                } else if (rand > 700 && rand <= Utils.getConfig("Magma_block.spawn") + 700) {
+                    block.setType(Material.MAGMA_BLOCK);
+                    e.setCancelled(true);
+                } else if (rand > 800 && rand <= Utils.getConfig("Netherrack.spawn") + 800) {
+                    block.setType(Material.NETHERRACK);
+                    e.setCancelled(true);
+                }
             }
         }
     }
