@@ -5,6 +5,7 @@ import fr.birdo.easycraftapi.util.Random;
 import fr.oxyodev.oxyocore.commands.CommandPvP;
 import fr.oxyodev.oxyocore.guis.GuiGenerator;
 import fr.oxyodev.oxyocore.utils.GeneratorData;
+import fr.oxyodev.oxyocore.utils.GeneratorLogger;
 import fr.oxyodev.oxyocore.utils.GeneratorTier;
 import fr.oxyodev.oxyocore.utils.Utils;
 import org.bukkit.Material;
@@ -19,7 +20,10 @@ import org.bukkit.event.block.BlockFormEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+
+import java.io.IOException;
 
 public class EventHandler implements Listener {
 
@@ -50,6 +54,17 @@ public class EventHandler implements Listener {
     }
 
     @org.bukkit.event.EventHandler
+    public void onHitDragonEgg(PlayerInteractEvent event) {
+        if (event.getClickedBlock() != null) {
+            if (event.getClickedBlock().getType() == Material.DRAGON_EGG) {
+                if (!OxyoCore.dragonEgg) {
+                    event.setCancelled(true);
+                }
+            }
+        }
+    }
+
+    @org.bukkit.event.EventHandler
     public void onGuiClicked(InventoryClickEvent event) {
         if (event.getClickedInventory() != null)
             if (event.getView().getTitle().equalsIgnoreCase("Generator Upgrade"))
@@ -57,6 +72,13 @@ public class EventHandler implements Listener {
                     if (event.getCursor() != null) {
                         if (event.getCursor().getType() == Utils.getTierByIndex(GeneratorData.getGeneratorTier()).getMaterial()) {
                             if (GeneratorData.getGeneratorAdvancement() + event.getCursor().getAmount() > Utils.getTierByIndex(GeneratorData.getGeneratorTier()).getCount()) {
+                                if (GeneratorData.getGeneratorTier() < GeneratorTier.EMERALD.getIndex() || GeneratorData.getGeneratorAdvancement() < GeneratorTier.EMERALD.getCount()) {
+                                    try {
+                                        GeneratorLogger.log((Player) event.getWhoClicked(), event.getCursor().getType(), event.getCursor().getAmount() - (event.getCursor().getAmount() - (Utils.getTierByIndex(GeneratorData.getGeneratorTier()).getCount() - GeneratorData.getGeneratorAdvancement())));
+                                    } catch (IOException e) {
+                                        throw new RuntimeException(e);
+                                    }
+                                }
                                 event.getCursor().setAmount(event.getCursor().getAmount() - (Utils.getTierByIndex(GeneratorData.getGeneratorTier()).getCount() - GeneratorData.getGeneratorAdvancement()));
                                 if (GeneratorData.getGeneratorTier() < 7) {
                                     GeneratorData.setGeneratorTier(Utils.getTierByIndex(GeneratorData.getGeneratorTier() + 1));
@@ -65,6 +87,11 @@ public class EventHandler implements Listener {
                                     GeneratorData.setGeneratorAdvancement(GeneratorTier.EMERALD.getCount());
                             } else {
                                 GeneratorData.setGeneratorAdvancement(GeneratorData.getGeneratorAdvancement() + event.getCursor().getAmount());
+                                try {
+                                    GeneratorLogger.log((Player) event.getWhoClicked(), event.getCursor().getType(), event.getCursor().getAmount());
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
                                 event.getCursor().setAmount(0);
                             }
                             PlayerHelper.updateGui((Player) event.getWhoClicked(), new GuiGenerator());

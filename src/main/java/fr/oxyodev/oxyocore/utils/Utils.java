@@ -1,7 +1,12 @@
 package fr.oxyodev.oxyocore.utils;
 
 import fr.oxyodev.oxyocore.OxyoCore;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.Listener;
+
+import java.io.File;
+import java.io.IOException;
 
 public class Utils implements Listener {
 

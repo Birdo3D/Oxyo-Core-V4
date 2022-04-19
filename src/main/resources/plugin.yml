@@ -9,3 +9,5 @@ commands:
     description: Enable or disable pvp
   generator:
     description: Generator Upgrade
+  dragonEgg:
+    description: Enable or disable dragon egg interactions
