@@ -2,11 +2,11 @@ package fr.oxyodev.oxyocore;
 
 import fr.birdo.easycraftapi.registry.GameRegistry;
 import fr.oxyodev.oxyocore.commands.CommandEgg;
+import fr.oxyodev.oxyocore.commands.CommandEnd;
 import fr.oxyodev.oxyocore.commands.CommandGenerator;
 import fr.oxyodev.oxyocore.commands.CommandPvP;
 import fr.oxyodev.oxyocore.guis.GuiGenerator;
 import fr.oxyodev.oxyocore.utils.GeneratorData;
-import fr.oxyodev.oxyocore.utils.GeneratorLogger;
 import fr.oxyodev.oxyocore.utils.Utils;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -26,6 +26,7 @@ public class OxyoCore extends JavaPlugin {
         GameRegistry.registerCommand(this, new CommandPvP(1));
         GameRegistry.registerCommand(this, new CommandGenerator(2));
         GameRegistry.registerCommand(this, new CommandEgg(3));
+        GameRegistry.registerCommand(this, new CommandEnd(4));
         GameRegistry.registerGui("oxyocore", new GuiGenerator(), 1);
         dragonEgg = getConfig().getBoolean("DragonEgg");
         dataFolderPath = getDataFolder().getAbsolutePath();

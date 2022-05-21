@@ -11,3 +11,5 @@ commands:
     description: Generator Upgrade
   dragonEgg:
     description: Enable or disable dragon egg interactions
+  end:
+    description: Teleport player in the ender
