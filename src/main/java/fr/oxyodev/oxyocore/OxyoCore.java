@@ -8,6 +8,8 @@ import fr.oxyodev.oxyocore.commands.CommandPvP;
 import fr.oxyodev.oxyocore.guis.GuiGenerator;
 import fr.oxyodev.oxyocore.utils.GeneratorData;
 import fr.oxyodev.oxyocore.utils.Utils;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -49,6 +51,9 @@ public class OxyoCore extends JavaPlugin {
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
+        }
+        for(Player player : Bukkit.getOnlinePlayers()){
+            CommandPvP.setAttackable(player, false);
         }
     }
 }
